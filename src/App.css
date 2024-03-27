@@ -1,0 +1,33 @@
+.loginButton {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px;
+}
+
+.navSection {
+    display: flex;
+    justify-content: center;
+}
+
+.menuArea {
+    display: flex;
+    justify-content: center;
+}
+
+.menuList {
+    display: flex;
+    list-style-type: none;
+}
+
+.menuList li {
+    padding: 10px;
+}
+
+.searchArea input {
+    border-width: 0 0 3px;
+    margin: 10px;
+}
+
+input:focus {
+    outline: none;
+}
