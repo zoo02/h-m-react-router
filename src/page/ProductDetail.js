@@ -20,18 +20,18 @@ const ProductDetail = () => {
 	return (
 		<Container>
 			<Row>
-				<Col className="productImg">
-					<img src={product?.img} alt="" />
+				<Col>
+					<img className="productImg" src={product?.img} alt="" />
 				</Col>
 				<Col>
 					<div>{product?.title}</div>
-					<div>₩{product?.price}</div>
+					<div>₩ {product?.price}</div>
 					<DropdownButton id="dropdown-basic-button" title="사이즈 선택">
 						<Dropdown.Item href="#/action-1">S</Dropdown.Item>
 						<Dropdown.Item href="#/action-2">M</Dropdown.Item>
 						<Dropdown.Item href="#/action-3">L</Dropdown.Item>
 					</DropdownButton>
-					<Button variant="dark">추가</Button>
+					<Button className="addBtn" variant="dark">추가</Button>
 				</Col>
 			</Row>
 		</Container>

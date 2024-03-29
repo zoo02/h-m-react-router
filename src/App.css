@@ -36,4 +36,15 @@ input:focus {
 .productImg {
     display: flex;
     justify-content: flex-end;
+    border-radius: 30px;
+    margin-bottom: 30px;
+}
+
+#dropdown-basic-button {
+    display: flex;
+}
+
+.addBtn {
+    width: 400px;
+    margin: 10px;
 }
