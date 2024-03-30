@@ -1,50 +1,170 @@
 .loginButton {
-    display: flex;
-    justify-content: flex-end;
-    margin: 20px;
-    cursor: pointer;
+	display: flex;
+	justify-content: flex-end;
+	margin: 20px;
+	cursor: pointer;
+}
+
+.loginButton div {
+	margin-left: 5px;
 }
 
 .navSection {
-    display: flex;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
+}
+
+.topNav {
+	display: flex;
+	justify-content: flex-end;
+	padding: 20px;
 }
 
 .menuArea {
-    display: flex;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .menuList {
-    display: flex;
-    list-style-type: none;
+	display: flex;
+	list-style-type: none;
 }
 
 .menuList li {
-    padding: 12px;
+	padding: 12px;
 }
 
 .searchArea input {
-    border-width: 0 0 3px;
-    margin: 10px;
+	border-width: 0 0 3px;
+	margin: 10px;
 }
 
 input:focus {
-    outline: none;
+	outline: none;
+}
+
+.card {
+	overflow: hidden;
+	padding: 0;
+	margin-bottom: 15px;
+	transition: transform 0.3s ease;
+}
+
+.card:hover {
+	transform: scale(1.03);
 }
 
 .productImg {
-    display: flex;
-    justify-content: flex-end;
-    border-radius: 30px;
-    margin-bottom: 30px;
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+	margin-bottom: 30px;
 }
 
-#dropdown-basic-button {
-    display: flex;
+.detailCap {
+	display: flex;
+	flex-flow: column;
+	align-items: flex-start;
+}
+
+.detailTitle,
+.detailPrice {
+	margin-bottom: 10px;
+}
+
+.dropDown {
+	margin-top: 20px;
+    width: 100%;
+	margin-left: 10px;
 }
 
 .addBtn {
-    width: 400px;
+	width: 100%;
+	margin: 10px;
+}
+
+.tags {
+	display: flex;
+	color: white;
     margin: 10px;
+}
+
+.tag {
+	border-radius: 5px;
+	background-color: salmon;
+	padding: 4px;
+    margin: 10px;
+}
+
+.tag:nth-child(2) {
+	background-color: sandybrown;
+    padding: 5px;
+}
+
+.hidden {
+	display: none;
+}
+
+.sidebar {
+	display: none;
+}
+
+.toggle {
+	display: none;
+}
+
+@media screen and (max-width: 48rem) {
+	.topNav {
+		justify-content: space-between;
+	}
+
+	.toggle {
+		display: flex;
+	}
+
+	.menuList {
+		display: none;
+	}
+	.sidebar {
+		display: flex;
+	}
+	.sideList {
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		overflow-x: hidden;
+		transition: 0.5s;
+		height: 100%;
+		padding: 0px;
+		background-color: red;
+		list-style: none;
+	}
+
+	.sideList .closeBtn {
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+		padding: 20px 30px 0 0;
+		font-size: 30px;
+		border: none;
+		color: black;
+	}
+
+	.sideList li {
+		white-space: nowrap;
+		padding: 40px 0 0 50px;
+		font-size: 1.04em;
+		font-weight: 600;
+		color: white;
+	}
+
+	.searchArea {
+		display: none;
+	}
+
+	.navSection {
+		margin-bottom: 30px;
+	}
 }

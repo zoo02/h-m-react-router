@@ -4,11 +4,14 @@ import { useNavigate } from "react-router-dom"
 
 const Login = ({setAuthenticate}) => {
     const navigate = useNavigate()
+
     const loginUser=(event)=>{
         event.preventDefault()
         setAuthenticate(true)
         navigate("/")
     }
+
+
 	return (
 		<Container>
 			<Form onSubmit={(event)=>loginUser(event)}>
