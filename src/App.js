@@ -28,8 +28,8 @@ function App() {
             <NavBar />
             <Routes>
                 <Route path='/' element={<AllProduct />} />
-                <Route path='/login' element={<Login setAuthenticate={setAuthenticate} />} />
-                <Route path='/products/:id' element={<PrivateRoute authenticate={authenticate}/>} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/products/:id' element={<PrivateRoute />} />
             </Routes>
         </div>
   );

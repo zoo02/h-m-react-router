@@ -4,19 +4,23 @@ import { Container, Row, Col } from "react-bootstrap"
 import Dropdown from "react-bootstrap/Dropdown"
 import DropdownButton from "react-bootstrap/DropdownButton"
 import Button from "react-bootstrap/Button"
+import { useDispatch, useSelector } from "react-redux"
+import { productAction } from "../redux/actions/productAction"
 
 const ProductDetail = () => {
-	let { id } = useParams()
-	const [product, setProduct] = useState(null)
+	const product = useSelector((state) => state.product.selectedItem);
+	const dispatch = useDispatch()
 	const getProductDetail = async () => {
-		let url = `https://my-json-server.typicode.com/zoo02/h-m-react-router/products/${id}`
-		let response = await fetch(url)
-		let data = await response.json()
-		setProduct(data)
+	  dispatch(productAction.getProductDetail(id));
 	}
+
+	let { id } = useParams()
+
+	
 	useEffect(() => {
 		getProductDetail()
 	}, [])
+
 	return (
 		<Container>
 			<Row>
@@ -50,5 +54,6 @@ const ProductDetail = () => {
 		</Container>
 	)
 }
+
 
 export default ProductDetail
