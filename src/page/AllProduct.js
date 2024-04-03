@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap"
 import { useSearchParams } from "react-router-dom"
 import {productAction} from "../redux/actions/productAction"
 import { UseDispatch, useDispatch, useSelector } from "react-redux"
+import { fetchProducts } from "../redux/reduces/productSlice"
 
 const AllProduct = () => {
     const productList = useSelector((state)=>state.product.productList)
@@ -11,7 +12,7 @@ const AllProduct = () => {
     const dispatch = useDispatch()
     const getProducts= ()=>{
         let searchQuery = query.get(`q`) || ""
-        dispatch(productAction.getProducts(searchQuery))
+        dispatch(fetchProducts(searchQuery))
     }
 
 	useEffect(() => {
