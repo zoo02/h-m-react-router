@@ -1,56 +1,55 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
-let initialState={
-    productList : [],
+let initialState = {
+    productList: [],
     selectedItem: null,
-    isLoading : false,
-    error : null
+    isLoading: false,
+    error: null,
 }
 
-
-export const fetchProducts = createAsyncThunk("product/fetchAll",async(searchQuery, thunkApi)=>{
-    try{
-        let url = `https://my-json-server.typicode.com/zoo02/h-m-react-router/products?q=${searchQuery}`
+export const fetchProducts = createAsyncThunk('product/fetchAll', async (searchQuery, thunkApi)=> {
+    try {
+        let url = `https://my-json-server.typicode.com/jinnypark9393/react-shoppingmall/products?q=${searchQuery}`
         let response = await fetch(url)
         return await response.json()
-    }catch(error) {
+    } catch(error) {
         thunkApi.rejectWithValue(error.message)
     }
 })
-// function productReducer(state = initialState, action) {
-//     let {type, payload} = action
-//     switch(type) {
-//         case "GET_PRODUCT_SUCCESS" :
-//         return {...state, productList :payload.data}
-//         case "GET_SINGLE_PRODUCT_SUCCESS" :
-//             return {...state, selectedItem:payload.data}
-//         default :
-//         return {...state}
-//     }
-// }
 
-// export default productReducer
-
+export const fetchSingleProduct = createAsyncThunk('product/fetchDetail', async (id, thunkApi)=> {
+    try {
+        let url = `https://my-json-server.typicode.com/jinnypark9393/react-shoppingmall/products/${id}`
+        let response = await fetch(url)
+        return await response.json()
+    } catch(error) {
+        thunkApi.rejectWithValue(error.message) 
+    }
+})
 
 const productSlice = createSlice({
-    name :"product",
+    name: "product",
     initialState,
-    reducers : {
-        getSingleProduct (state, action) {
-            state.selectedItem= action.payload.data
-        }
-    },
-    extraReducers : (builder)=> {
-        builder.addCase(fetchProducts.pending, (state)=>{
-            state.isLoading=true
+    extraReducers: (builder) => {
+        builder.addCase(fetchProducts.pending, (state) => {
+            state.isLoading = true
         })
-        .addCase(fetchProducts.fulfilled, (state,action)=>{
-            state.isLoading=false
-            state.selectedItem= action.payload.data
+        .addCase(fetchProducts.fulfilled, (state, action)=> {
+            state.isLoading = false
+            state.productList = action.payload
         })
-        .addCase(fetchProducts.rejected, (state,action)=>{
-            state.isLoading=false
-            state.error=action.payload
+        .addCase(fetchProducts.rejected, (state, action)=> { 
+            state.isLoading = false
+        })
+        .addCase(fetchSingleProduct.pending, (state) => {
+            state.isLoading = true
+        })
+        .addCase(fetchSingleProduct.fulfilled, (state, action)=> {
+            state.isLoading = false
+            state.selectedItem = action.payload
+        })
+        .addCase(fetchSingleProduct.rejected, (state, action) => {
+            state.isLoading = false
         })
     }
 })

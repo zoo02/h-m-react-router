@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { Container, Row, Col } from "react-bootstrap"
-import Dropdown from "react-bootstrap/Dropdown"
-import DropdownButton from "react-bootstrap/DropdownButton"
-import Button from "react-bootstrap/Button"
+import { Container, Row, Col, Button, Dropdown, DropdownButton  } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import { productAction } from "../redux/actions/productAction"
+import {fetchSingleProduct} from "../redux/reduces/productSlice"
 
 const ProductDetail = () => {
 	const product = useSelector((state) => state.product.selectedItem);
 	const dispatch = useDispatch()
 	const getProductDetail = async () => {
-	  dispatch(productAction.getProductDetail(id));
+	  dispatch(fetchSingleProduct(id));
 	}
 
 	let { id } = useParams()
